@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "actions": {
+    "getStarted": "Get started",
+    "learnMore": "Learn more",
+    "changeLanguage": "Change language",
+    "changeTheme": "Change theme"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "home": {
+    "seo": {
+      "title": "Easy Starter React-Vite",
+      "description": "A lightweight, configurable Vite React starter for multilingual, themeable, SEO-aware websites."
+    },
+    "eyebrow": "Vite + React + TypeScript",
+    "title": "Build beautiful small websites without repeating setup work.",
+    "description": "A practical starter for landing pages, portfolios, and company websites with routing, i18n, theme tokens, brand config, SEO helpers, and production scripts already wired in.",
+    "primaryCta": "See features",
+    "secondaryCta": "View the architecture",
+    "featuresTitle": "Everything you usually repeat, already done.",
+    "features": {
+      "i18n": {
+        "title": "Multilingual by default",
+        "description": "Translations, language switching, localStorage persistence, and RTL direction support are ready."
+      },
+      "theme": {
+        "title": "Themeable brand system",
+        "description": "Change colors, logo, typography, and metadata from a small set of config files."
+      },
+      "production": {
+        "title": "Production-ready basics",
+        "description": "TypeScript strict mode, linting, formatting, tests, sitemap generation, and deployment workflow are included."
+      }
+    }
+  },
+  "about": {
+    "seo": {
+      "title": "About this starter",
+      "description": "Learn how the Vite React starter is organized and when to use it."
+    },
+    "title": "A starter for practical React websites.",
+    "description": "This template focuses on the common needs of small and medium React websites: clean structure, easy customization, good defaults, and no unnecessary enterprise architecture.",
+    "sections": {
+      "useWhen": {
+        "title": "Use it when",
+        "items": [
+          "You need a fast landing page or portfolio.",
+          "You want multilingual content without rebuilding i18n every time.",
+          "You need a reusable brand and theme setup."
+        ]
+      },
+      "avoidWhen": {
+        "title": "Avoid it when",
+        "items": [
+          "You need server rendering or static generation for every route.",
+          "You need backend routes in the same project.",
+          "You are building a large enterprise application with complex domain modules."
+        ]
+      }
+    }
+  },
+  "notFound": {
+    "seo": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist."
+    },
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}
