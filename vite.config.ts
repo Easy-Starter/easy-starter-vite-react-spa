@@ -1,19 +1,38 @@
-import react from "@vitejs/plugin-react";
-import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vitest/config";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+const rootDirectory = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
   base: process.env.VITE_BASE_PATH || "/",
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
+    react(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": path.resolve(rootDirectory, "src"),
     },
   },
-  test: {
-    environment: "jsdom",
-    globals: true,
-    setupFiles: "./src/test/setup.ts",
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
+  preview: {
+    port: 4173,
+    strictPort: true,
+  },
+  build: {
+    sourcemap: true,
+    reportCompressedSize: true,
   },
 });

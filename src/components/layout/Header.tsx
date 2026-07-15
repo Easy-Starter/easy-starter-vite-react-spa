@@ -1,17 +1,18 @@
-import { NavLink } from 'react-router';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router";
 
-import { appRoutes } from '@/app/router';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { brandConfig } from '@/config/brand';
-import { useTheme } from '@/theme/useTheme';
-import { cn } from '@/utils/classNames';
+import { appRoutes } from "@/app/router";
+import { brandConfig } from "@/config/brand";
+import { LanguageSwitcher } from "@/shared/components/LanguageSwitcher";
+import { ThemeToggle } from "@/shared/components/ThemeToggle";
+import { useTheme } from "@/theme/useTheme";
+import { cn } from "@/utils/classNames";
 
 export function Header() {
   const { t } = useTranslation();
   const { resolvedTheme } = useTheme();
-  const logo = resolvedTheme === 'dark' ? brandConfig.logo.dark : brandConfig.logo.light;
+  const logo =
+    resolvedTheme === "dark" ? brandConfig.logo.dark : brandConfig.logo.light;
 
   return (
     <header className="site-header">
@@ -27,8 +28,10 @@ export function Header() {
               <NavLink
                 key={route.path}
                 to={route.path}
-                end={route.path === '/'}
-                className={({ isActive }) => cn('nav-link', isActive && 'nav-link-active')}
+                end={route.path === "/"}
+                className={({ isActive }) =>
+                  cn("nav-link", isActive && "nav-link-active")
+                }
               >
                 {t(route.labelKey)}
               </NavLink>
