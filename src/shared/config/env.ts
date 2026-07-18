@@ -5,7 +5,7 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  VITE_APP_NAME: z.string().trim().min(1).default("Easy Starter SPA"),
+  VITE_APP_NAME: z.string().trim().min(1).default("Easy Starter React"),
   VITE_APP_ENV: z
     .enum(["development", "test", "staging", "production"])
     .default("development"),

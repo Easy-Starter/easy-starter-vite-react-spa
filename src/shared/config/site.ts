@@ -1,12 +1,29 @@
-import { env } from "@/shared/config/env";
+import { brandConfig } from "./brand";
+
+export type LocaleCode = "en" | "fa";
+export type LocaleDirection = "ltr" | "rtl";
 
 export const siteConfig = {
-  name: env.appName,
-  description:
-    "A scalable, maintainable, and high-performance Vite React SPA starter.",
-  navigation: [
-    { label: "Home", to: "/" as const },
-    { label: "About", to: "/about" as const },
-    { label: "Dashboard", to: "/dashboard" as const },
-  ],
+  baseUrl: import.meta.env.VITE_SITE_URL || brandConfig.url,
+  defaultLocale: "en" satisfies LocaleCode,
+  supportedLocales: [
+    { code: "en", label: "English", dir: "ltr" },
+    { code: "fa", label: "فارسی", dir: "rtl" },
+  ] satisfies Array<{ code: LocaleCode; label: string; dir: LocaleDirection }>,
+  name: brandConfig.name,
+  description: "",
+  seo: {
+    defaultTitle: brandConfig.name,
+    titleTemplate: `%s | ${brandConfig.name}`,
+    defaultDescription: brandConfig.description,
+    defaultImage: brandConfig.openGraphImage,
+    twitterCard: "summary_large_image",
+  },
 } as const;
+
+export function getLocaleDirection(locale: string): LocaleDirection {
+  return (
+    siteConfig.supportedLocales.find((item) => item.code === locale)?.dir ??
+    "ltr"
+  );
+}

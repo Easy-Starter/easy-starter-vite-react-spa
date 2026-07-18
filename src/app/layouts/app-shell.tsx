@@ -1,7 +1,7 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { LayoutDashboard, Settings } from "lucide-react";
 
-import { ThemeToggle } from "@/app/features/theme-toggle";
+import { ThemeToggle } from "@/app/theme/theme-toggle";
 import { siteConfig } from "@/shared/config/site";
 import { cn } from "@/shared/lib/cn";
 

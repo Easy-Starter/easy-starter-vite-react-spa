@@ -8,13 +8,17 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as PublicRouteImport } from './routes/_public'
-import { Route as AppRouteImport } from './routes/_app'
-import { Route as PublicIndexRouteImport } from './routes/_public/index'
-import { Route as PublicAboutRouteImport } from './routes/_public/about'
-import { Route as AppSettingsRouteImport } from './routes/_app/settings'
-import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
+import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as PublicRouteImport } from './app/routes/_public'
+import { Route as AppRouteImport } from './app/routes/_app'
+import { Route as PublicIndexRouteImport } from './app/routes/_public/index'
+import { Route as PublicRegisterRouteImport } from './app/routes/_public/register'
+import { Route as PublicPricingRouteImport } from './app/routes/_public/pricing'
+import { Route as PublicLoginRouteImport } from './app/routes/_public/login'
+import { Route as PublicContactRouteImport } from './app/routes/_public/contact'
+import { Route as PublicAboutRouteImport } from './app/routes/_public/about'
+import { Route as AppSettingsRouteImport } from './app/routes/_app/settings'
+import { Route as AppDashboardRouteImport } from './app/routes/_app/dashboard'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -27,6 +31,26 @@ const AppRoute = AppRouteImport.update({
 const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicRegisterRoute = PublicRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPricingRoute = PublicPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicLoginRoute = PublicLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicContactRoute = PublicContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicAboutRoute = PublicAboutRouteImport.update({
@@ -50,12 +74,20 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AppDashboardRoute
   '/settings': typeof AppSettingsRoute
   '/about': typeof PublicAboutRoute
+  '/contact': typeof PublicContactRoute
+  '/login': typeof PublicLoginRoute
+  '/pricing': typeof PublicPricingRoute
+  '/register': typeof PublicRegisterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PublicIndexRoute
   '/dashboard': typeof AppDashboardRoute
   '/settings': typeof AppSettingsRoute
   '/about': typeof PublicAboutRoute
+  '/contact': typeof PublicContactRoute
+  '/login': typeof PublicLoginRoute
+  '/pricing': typeof PublicPricingRoute
+  '/register': typeof PublicRegisterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -64,13 +96,33 @@ export interface FileRoutesById {
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/settings': typeof AppSettingsRoute
   '/_public/about': typeof PublicAboutRoute
+  '/_public/contact': typeof PublicContactRoute
+  '/_public/login': typeof PublicLoginRoute
+  '/_public/pricing': typeof PublicPricingRoute
+  '/_public/register': typeof PublicRegisterRoute
   '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/settings' | '/about'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/settings'
+    | '/about'
+    | '/contact'
+    | '/login'
+    | '/pricing'
+    | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/settings' | '/about'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/settings'
+    | '/about'
+    | '/contact'
+    | '/login'
+    | '/pricing'
+    | '/register'
   id:
     | '__root__'
     | '/_app'
@@ -78,6 +130,10 @@ export interface FileRouteTypes {
     | '/_app/dashboard'
     | '/_app/settings'
     | '/_public/about'
+    | '/_public/contact'
+    | '/_public/login'
+    | '/_public/pricing'
+    | '/_public/register'
     | '/_public/'
   fileRoutesById: FileRoutesById
 }
@@ -107,6 +163,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/register': {
+      id: '/_public/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof PublicRegisterRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/pricing': {
+      id: '/_public/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PublicPricingRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/login': {
+      id: '/_public/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof PublicLoginRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/contact': {
+      id: '/_public/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof PublicContactRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/about': {
@@ -147,11 +231,19 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface PublicRouteChildren {
   PublicAboutRoute: typeof PublicAboutRoute
+  PublicContactRoute: typeof PublicContactRoute
+  PublicLoginRoute: typeof PublicLoginRoute
+  PublicPricingRoute: typeof PublicPricingRoute
+  PublicRegisterRoute: typeof PublicRegisterRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicAboutRoute: PublicAboutRoute,
+  PublicContactRoute: PublicContactRoute,
+  PublicLoginRoute: PublicLoginRoute,
+  PublicPricingRoute: PublicPricingRoute,
+  PublicRegisterRoute: PublicRegisterRoute,
   PublicIndexRoute: PublicIndexRoute,
 }
 

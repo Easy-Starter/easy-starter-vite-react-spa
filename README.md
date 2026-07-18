@@ -79,3 +79,63 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution rules and [`SUPPORT.md
 ## License
 
 Released under the [MIT License](LICENSE).
+
+<!-- A scalable, maintainable, and high-performance foundation for dashboards, portals, internal tools, embedded apps, and client-side applications.
+
+## Why this starter
+
+- **Fast new routes:** file-based routing plus `pnpm generate:page`.
+- **Maintainable growth:** clear import direction between routes, pages, features, and shared code.
+- **High performance:** Vite 8, automatic route splitting, intent preloading, and query caching.
+- **Design flexibility:** Tailwind CSS v4 tokens, light/dark themes, and reusable UI primitives.
+- **Production checks:** strict TypeScript, ESLint, Vitest, Playwright, Docker, and CI.
+
+## Requirements
+
+- Node.js 22.12+
+- pnpm 10+
+
+## Start
+
+```bash
+corepack enable
+pnpm install
+pnpm dev
+```
+
+Commit the generated `pnpm-lock.yaml` before enabling CI on a new repository.
+
+## Add a page
+
+run below command after adding new route:
+pnpm routes:generate
+
+
+```bash
+pnpm generate:page reports app
+pnpm generate:page pricing public
+```
+
+`app` uses the dashboard shell. `public` uses the public website layout.
+
+## Main commands
+
+```bash
+pnpm dev
+pnpm check
+pnpm test:e2e
+pnpm build
+```
+
+## Structure
+
+```text
+src/
+├── app/       # providers, layouts, router, config, global styles
+├── routes/    # URL definitions, loaders, guards, search validation
+├── pages/     # route-level UI composition
+├── features/  # business capabilities
+└── shared/    # generic UI, API client, hooks, and helpers
+```
+
+For public marketing pages that require strong SEO, SSR, or static generation, use the Easy Starter Next.js Marketing Site instead of this SPA starter. -->

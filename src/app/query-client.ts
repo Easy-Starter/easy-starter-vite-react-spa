@@ -1,6 +1,6 @@
-import { QueryClient } from '@tanstack/react-query'
+import { QueryClient } from "@tanstack/react-query";
 
-import { ApiError } from '@/shared/api/http-client'
+import { ApiError } from "@/shared/base/http-client";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -9,15 +9,19 @@ export const queryClient = new QueryClient({
       gcTime: 5 * 60_000,
       refetchOnWindowFocus: false,
       retry: (failureCount, error) => {
-        if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
-          return false
+        if (
+          error instanceof ApiError &&
+          error.status >= 400 &&
+          error.status < 500
+        ) {
+          return false;
         }
 
-        return failureCount < 2
+        return failureCount < 2;
       },
     },
     mutations: {
       retry: false,
     },
   },
-})
+});

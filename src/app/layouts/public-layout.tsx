@@ -1,9 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 
-import { ThemeToggle } from "@/app/features/theme-toggle";
+import { ThemeToggle } from "@/app/theme/theme-toggle";
 import { Container } from "@/shared/components/ui/container";
 import { siteConfig } from "@/shared/config/site";
-import { cn } from "@/shared/lib/cn";
 
 export const PublicLayout = () => {
   return (
@@ -20,7 +19,7 @@ export const PublicLayout = () => {
             <span>{siteConfig.name}</span>
           </Link>
 
-          <nav
+          {/* <nav
             aria-label="Primary navigation"
             className="hidden items-center gap-1 sm:flex"
           >
@@ -38,7 +37,7 @@ export const PublicLayout = () => {
                 {item.label}
               </Link>
             ))}
-          </nav>
+          </nav> */}
 
           <ThemeToggle />
         </Container>
@@ -50,9 +49,9 @@ export const PublicLayout = () => {
 
       <footer className="border-t border-border">
         <Container className="flex min-h-20 items-center justify-between gap-4 py-6 text-sm text-muted-foreground">
-          <p>Built with Vite, React, TanStack Router, and Tailwind CSS.</p>
+          <p>“What do we build for, if not to lessen each other’s hardship?”</p>
           <Link to="/about" className="hover:text-foreground">
-            Architecture
+            Easy Starter React
           </Link>
         </Container>
       </footer>
